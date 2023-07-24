@@ -1,11 +1,4 @@
-# How to generate project-nix/ghc-$(GHC_VERSION)/sha256map.nix?
-# This is copied from ghc-$(GHC_VERSION).sha256map.nix.
-#  - false to generate from *.dhall inputs via sha256map.hs.
-#  - true to generate from stack.yaml via sha256map.py.
-SHA256MAP_VIA_PYTHON ?= false
-
 # To use installed executables instead of *.hs scripts, set these to true.
-SHA256MAP_HS_EXE ?= false
 PKG_GROUPS_HS_EXE ?= false
 PKGS_SORTED_HS_EXE ?= false
 PKGS_UPGRADE_DONE_HS_EXE ?= false
@@ -30,17 +23,6 @@ all: \
 .INTERMEDIATE: ghc-$(GHC_UPGRADE).$(CABAL_VIA).project
 .INTERMEDIATE: ghc-$(GHC_VERSION).$(STACK_VIA).yaml
 .INTERMEDIATE: ghc-$(GHC_UPGRADE).$(STACK_VIA).yaml
-.INTERMEDIATE: ghc-$(GHC_VERSION).sha256map.nix
-.INTERMEDIATE: ghc-$(GHC_UPGRADE).sha256map.nix
-
-# If true, generate the sha256map from the stack.yaml with python,
-# overriding the recipe for this target.
-ifeq ($(SHA256MAP_VIA_PYTHON), true)
-ghc-$(GHC_VERSION).sha256map.nix: stack.yaml
-	updo/project-nix/sha256map.py <$^ >$@
-ghc-$(GHC_UPGRADE).sha256map.nix: stack.upgrade.yaml
-	updo/project-nix/sha256map.py <$^ >$@
-endif
 
 .DEFAULT_GOAL := all
 

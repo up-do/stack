@@ -50,3 +50,5 @@ better-cache/
 .updo
 updo
 project-nix
+project-versions.nix
+*.sha256map.nix
