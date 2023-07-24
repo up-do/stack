@@ -1,0 +1,61 @@
+user-message: "WARNING: This stack project is generated."
+
+drop-packages:
+  # See https://github.com/commercialhaskell/stack/pull/4712
+  - cabal-install
+
+docker:
+  enable: false
+  repo: fpco/alpine-haskell-stack:9.2.7
+
+nix:
+  # --nix on the command-line to enable.
+  packages:
+  - zlib
+  - unzip
+
+flags:
+  hackage-security:
+    Cabal-syntax: true
+  mintty:
+    win32-2-13-1: false
+  stack:
+    developer-mode: true
+
+ghc-options:
+  "$locals": -fhide-source-paths
+
+
+resolver: lts-21.4
+
+# We have 1 packages.
+packages:
+  - ./.
+
+# We have 0 source packages listed in this order:
+#   * external 0
+#   * internal 0
+#   * external forks 0
+#   * internal forks 0
+extra-deps:
+
+  # Source Packages, external (3rd party).
+
+  # Source Packages, internal to this organisation (private and public).
+
+  # Source Packages, external (3rd party) forks of other repositories.
+  # Can we help upstream?
+
+  # Source Packages, internal forks of other repositories.
+  # Can we upstream and unfork?
+
+  # Package versions for published packages either not on Stackage or
+  # not matching the version on Stackage for the resolver we use.
+  # These package-version extra dependencies are equivalent to cabal constraints.
+  - aeson-warning-parser-0.1.0
+  - ansi-terminal-1.0
+  - companion-0.1.0
+  - optparse-applicative-0.18.1.0
+  - optparse-generic-1.5.0
+  - pantry-0.9.1
+  - static-bytes-0.1.0
