@@ -14,12 +14,5 @@ program-options
 import: ./project-stackage/lts-21.4.config
 
 import: ./project-cabal/pkgs.config
-
 import: ./project-cabal/ghc-9.4.5/constraints.config
-import: ./project-cabal/ghc-9.4.5/deps-external.config
-import: ./project-cabal/ghc-9.4.5/deps-internal.config
-import: ./project-cabal/ghc-9.4.5/forks-external.config
-import: ./project-cabal/ghc-9.4.5/forks-internal.config
-
 build-info: True
-
